@@ -6,7 +6,7 @@
 /*   By: kyuhkim <kyuhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 12:53:22 by kyuhkim           #+#    #+#             */
-/*   Updated: 2021/01/21 00:29:11 by kyuhkim          ###   ########.fr       */
+/*   Updated: 2021/01/21 21:39:05 by kyuhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void				ft_show_default_ip_class();
 int					ft_show_ip();
 unsigned char		ft_get_default_ip_class();
 unsigned int		ft_get_subnet_mask();
-void				ft_show_subip_exception(unsigned int host);
+void				ft_show_subip_exception();
 int					ft_show_tail_subnet();
 void				ft_show_subnet_mask();
 void				ft_show_subnet_addr();

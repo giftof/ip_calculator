@@ -6,7 +6,7 @@
 /*   By: kyuhkim <kyuhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 18:27:00 by kyuhkim           #+#    #+#             */
-/*   Updated: 2021/01/21 00:30:17 by kyuhkim          ###   ########.fr       */
+/*   Updated: 2021/01/21 21:39:46 by kyuhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int						ft_show_tail_subnet(void)
 	return (3);
 }
 
-void					ft_show_subip_exception(unsigned int host)
+void					ft_show_subip_exception()
 {
 	unsigned int		subnet_mask;
 	unsigned int		subnet_addr;
@@ -142,7 +142,7 @@ void					ft_show_subhost_addr(void)
 	broadcast = (ft_get_subnet_mask() ^ FULL_IP_VALUE);
 	host = (g_ip & broadcast);
 	ft_show_value_iptype(g_ip);
-	ft_show_subip_exception(host);
+	ft_show_subip_exception();
 }
 
 void					show_range(unsigned int min, unsigned int max)
@@ -165,10 +165,8 @@ void					show_range(unsigned int min, unsigned int max)
 void					ft_show_useable_subhost_range(void)
 {
 	unsigned int		mask;
-	unsigned int		convert;
 	unsigned int		broadcast;
 	unsigned char		default_ip_class_value;
-	unsigned int		range[2];
 
 	mask = ft_get_subnet_mask();
 	broadcast = (mask ^ FULL_IP_VALUE);

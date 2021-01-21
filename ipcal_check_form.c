@@ -6,7 +6,7 @@
 /*   By: kyuhkim <kyuhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 10:44:34 by kyuhkim           #+#    #+#             */
-/*   Updated: 2021/01/20 23:55:15 by kyuhkim          ###   ########.fr       */
+/*   Updated: 2021/01/21 21:38:09 by kyuhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ void				set_type(int index)
 		write(1, "\n", 1);
 }
 
+int					zero_error(void)
+{
+	g_ip = 0;
+	g_subnet_bit = 0;
+	return (ZERO_E);
+}
+
+int					range_error(void)
+{
+	g_ip = 0;
+	return (RANGE_E);
+}
+
 int					check_ip_value(int *data, char *buff)
 {
 	int				index;
@@ -49,10 +62,11 @@ int					check_ip_value(int *data, char *buff)
 		if ((0 <= data[index + 1]) && (data[index + 1] <= IP_V4) && ++index)
 			g_ip |= (data[index] << ((index - 1) * 8));
 		else
-		{
-			g_ip = 0;
-			return (RANGE_E);
-		}
+			return (range_error());
+		// {
+		// 	g_ip = 0;
+		// 	return (RANGE_E);
+		// }
 	}
 	g_subnet_bit = (ft_get_default_ip_class() + 1) * 8;
 	if (data[0] == IP_V4_BLOCK_SIZE + 1)
@@ -62,6 +76,9 @@ int					check_ip_value(int *data, char *buff)
 		else
 			return (SUBNET_SIZE_E);
 	}
+	if (!g_ip)
+		return (zero_error());
+		// return (ZERO_E);
 	return (ft_input_checker(buff));
 }
 
@@ -96,7 +113,6 @@ int					check_ip_form(char *buff)
 
 int					is_mask_flag_continue(int value, int *flag_count)
 {
-	int				flag;
 	int				bit_index;
 
 	bit_index = CHARACTER_LENGTH - 1;
