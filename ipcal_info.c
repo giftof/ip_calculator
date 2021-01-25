@@ -6,7 +6,7 @@
 /*   By: kyuhkim <kyuhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 18:27:00 by kyuhkim           #+#    #+#             */
-/*   Updated: 2021/01/21 21:39:46 by kyuhkim          ###   ########.fr       */
+/*   Updated: 2021/01/25 12:50:04 by kyuhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,4 +270,14 @@ void					ft_show_value_iptype(unsigned int arg)
 			write(1, ".", 1);
 		loop++;
 	}
+}
+
+void					ft_show_bool(int value)
+{
+	if (value)
+	{
+		write(1, "ON ", 3);
+		return ;
+	}
+	write(1, "OFF ", 3);
 }

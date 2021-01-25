@@ -6,7 +6,7 @@
 /*   By: kyuhkim <kyuhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 12:50:01 by kyuhkim           #+#    #+#             */
-/*   Updated: 2021/01/20 22:28:43 by kyuhkim          ###   ########.fr       */
+/*   Updated: 2021/01/25 12:50:47 by kyuhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 unsigned int		g_ip;
 unsigned char		g_subnet_bit;
 unsigned int		g_c_mask;
+int					g_auto_flag;
 
 void				ft_show_prompt(void)
 {
 	int				ip_length;
 
-	write(1, "input ip = [", 12);
+	write(1, "auto-status[", 12);
+	ft_show_bool(g_auto_flag);
+	write(1, "] ", 2);
+	write(1, "input_ip[", 12);
 	ft_show_default_ip_class();
 	write(1, ":", 1);
 	ip_length = ft_show_ip();
@@ -42,6 +46,8 @@ int					main(void)
 {
 	char			buff[BUFFER_SIZE];
 
+	g_auto_flag = 1;
+	ft_show_whole_file("./f_header\0");
 	ft_show_whole_file("./f_help\0");
 	ft_show_prompt();
 	while (1)

@@ -6,7 +6,7 @@
 /*   By: kyuhkim <kyuhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 12:53:22 by kyuhkim           #+#    #+#             */
-/*   Updated: 2021/01/21 21:39:05 by kyuhkim          ###   ########.fr       */
+/*   Updated: 2021/01/25 12:48:55 by kyuhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 extern unsigned char	g_subnet_bit;
 extern unsigned int		g_ip;
 extern unsigned int		g_c_mask;
+extern int				g_auto_flag;
 /*
 ** ipcal.c
 */
@@ -63,6 +64,7 @@ unsigned int		ft_get_sub_broadcast_addr(void);
 void				ft_show_sub_broadcast_addr();
 void				ft_show_useable_subhost_range();
 void				ft_show_private();
+void				ft_show_bool(int value);
 /*
 ** ipcal_itoa.c
 */

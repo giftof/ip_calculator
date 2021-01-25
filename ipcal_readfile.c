@@ -6,7 +6,7 @@
 /*   By: kyuhkim <kyuhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 19:01:18 by kyuhkim           #+#    #+#             */
-/*   Updated: 2021/01/20 13:10:41 by kyuhkim          ###   ########.fr       */
+/*   Updated: 2021/01/25 13:01:28 by kyuhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void				ft_show_file_data_with_f(char *file_name,
 	if ((fd = open(file_name, O_RDONLY)) < 0)
 		return ;
 	dest = NULL;
+	write(1, "\n", 1);
 	while ((result = ft_get_next_line(fd, &dest)))
 	{
 		temp = dest;

@@ -6,7 +6,7 @@
 /*   By: kyuhkim <kyuhkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 10:44:34 by kyuhkim           #+#    #+#             */
-/*   Updated: 2021/01/21 21:38:09 by kyuhkim          ###   ########.fr       */
+/*   Updated: 2021/01/25 13:03:33 by kyuhkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,12 +210,17 @@ int					ft_whatform(char *buff)
 		return (check_mask_form(buff + 5));
 	if (ft_compare(buff, "m \0"))
 		return (check_mask_form(buff + 2));
+	if (ft_compare(buff, "auto\n"))
+	{
+		g_auto_flag = !(g_auto_flag);
+		return (ft_command(buff + 4));
+	}
 	if (ft_compare(buff, "status\0"))
 	{
 		if (!g_ip)
 			return (ZERO_E);
-		write(1, "\n", 1);
-		ft_show_file_data_with_f("./f_status", set_type);
+		if (!g_auto_flag)
+			ft_show_file_data_with_f("./f_status", set_type);
 		return (ft_input_checker(buff + 6));
 	}
 	if (ft_compare(buff, "quit\0"))
@@ -234,8 +239,13 @@ int					ft_command(char *buff)
 	{
 		if (!g_ip)
 			return (ZERO_E);
-		write(1, "\n", 1);
-		ft_show_file_data_with_f("./f_status", set_type);
+		if (!g_auto_flag)
+			ft_show_file_data_with_f("./f_status", set_type);
+		return (ft_command(++buff));
+	}
+	if (ft_compare(buff, "a\n"))
+	{
+		g_auto_flag = !(g_auto_flag);
 		return (ft_command(++buff));
 	}
 	if (ft_compare(buff, "q\0"))
@@ -279,6 +289,8 @@ int					ft_check_form(char *buff)
 			return (-1);
 		ft_show_error_code(result);
 	}
+	if (g_auto_flag)
+		ft_show_file_data_with_f("./f_status", set_type);
 	ft_show_prompt();
 	return (0);
 }
