@@ -9,6 +9,9 @@
 |                                                                                         |
 | [-h || help]      : show this help messages                                             |
 | [-s || status]    : show status                                                         |
+| [-a || auto]      : auto show -s option. (This option does not support forms such as    |
+|                       [-s ip -s]. If you want to see the two together, please turn off  |
+|                       the auto function)                                                |
 | [-q || quit]      : quit                                                                |
 |                                                                                         |
 |                                                                                         |
